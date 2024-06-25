@@ -6,6 +6,7 @@
 
 import pygame
 import random
+import sys
 
 W = 1920
 H = 1080
@@ -19,6 +20,7 @@ screen = pygame.display.set_mode((W, H))
 pygame.display.set_caption("Flappy Bird")
 running = True
 clock = pygame.time.Clock()
+path = sys.argv[0]
 
 class Bird:
     def __init__(self):
@@ -34,7 +36,7 @@ class Bird:
         
     def loadSprites(self):
         spriteCords = ((0, 0, BIRD_W, BIRD_H), (BIRD_W, 0, BIRD_W, BIRD_H), (2 * BIRD_W, 0, BIRD_W, BIRD_H))
-        self.sheet = pygame.image.load("assets/bird.png").convert()
+        self.sheet = pygame.image.load(f"{path}/assets/bird.png").convert()
 
         for cord in spriteCords:
             rect = pygame.Rect(cord)
@@ -96,8 +98,8 @@ class Bird:
 class Pipe:
     def __init__(self):
         self.x = W + 30
-        self.top = pygame.image.load("assets/pipeTop.png")
-        self.bottom = pygame.image.load("assets/pipeBottom.png")
+        self.top = pygame.image.load(f"{path}/assets/pipeTop.png")
+        self.bottom = pygame.image.load(f"{path}/assets/pipeBottom.png")
         self.topY = 0 - random.randint(200, PIPE_H - 300)
         self.bottomY = self.topY + PIPE_H + 300
         self.v = -10
@@ -126,7 +128,7 @@ class Bushes:
     def __init__(self):
         self.x = 0
         self.y = 0
-        self.image = pygame.image.load("assets/bushes.png")
+        self.image = pygame.image.load(f"{path}/assets/bushes.png")
     
     def draw(self):
         screen.blit(self.image, (self.x, self.y))
@@ -139,7 +141,7 @@ class Clouds:
     def __init__(self):
         self.x = 0
         self.y = 0
-        self.image = pygame.image.load("assets/clouds.png")
+        self.image = pygame.image.load(f"{path}/assets/clouds.png")
     
     def draw(self):
         screen.blit(self.image, (self.x, self.y))
