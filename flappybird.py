@@ -20,7 +20,7 @@ screen = pygame.display.set_mode((W, H))
 pygame.display.set_caption("Flappy Bird")
 running = True
 clock = pygame.time.Clock()
-path = sys.argv[0]
+path = sys.argv[0].strip("flappybird.py")
 
 class Bird:
     def __init__(self):
